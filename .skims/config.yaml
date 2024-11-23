@@ -2,6 +2,7 @@ strict: true
 file_size_limit: 10MB
 output:
   format: csv
+  path: ./reports/results.csv
 files:
   include:
     - "**"
