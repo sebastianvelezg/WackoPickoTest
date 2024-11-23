@@ -1,0 +1,18 @@
+name: Security Scan
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Run Fluid Attacks Scanner
+        uses: docker://docker.io/fluidattacks/cli:latest
+        with:
+          args: skims scan .
