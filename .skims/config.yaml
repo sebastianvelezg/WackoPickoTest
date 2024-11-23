@@ -1,16 +1,17 @@
+namespace: wackopicko
+output:
+  file_path: ./reports/results.csv
+  format: CSV
 strict: true
 file_size_limit: 10MB
-output:
-  format: csv
-  path: ./reports/results.csv
-files:
+sast:
   include:
-    - "**"
+    - .
   exclude:
-    - ".git/**"
-    - "node_modules/**"
-vulnerabilities:
-  false_positives: []
-  exclusions: []
-checks:
-  - all
+    - glob(**/node_modules/**)
+    - glob(**/test/**)
+sca:
+  include:
+    - .
+  exclude:
+    - glob(**/test/**)
