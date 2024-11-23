@@ -12,14 +12,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
+      - name: Create output directory
+        run: mkdir -p reports
+
       - name: Run Fluid Attacks Scanner
         uses: docker://docker.io/fluidattacks/cli:latest
         with:
-          args: skims scan . --output results.csv
+          args: skims scan . --output ./reports/results.csv
 
       - name: Upload scan results
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: security-scan-results
-          path: results.csv
+          path: reports/
+          if-no-files-found: warn
