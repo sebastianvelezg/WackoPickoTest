@@ -1,0 +1,15 @@
+strict: true
+file_size_limit: 10MB
+output:
+  format: csv
+files:
+  include:
+    - "**"
+  exclude:
+    - ".git/**"
+    - "node_modules/**"
+vulnerabilities:
+  false_positives: []
+  exclusions: []
+checks:
+  - all
