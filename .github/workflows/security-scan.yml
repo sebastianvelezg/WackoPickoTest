@@ -18,7 +18,7 @@ jobs:
       - name: Run Fluid Attacks Scanner
         uses: docker://docker.io/fluidattacks/cli:latest
         with:
-          args: skims scan . --output ./reports/results.csv
+          args: skims scan . -o ./reports/results.csv
 
       - name: Upload scan results
         if: always()
